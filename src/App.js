@@ -4,15 +4,14 @@ import NavigationBar from './components/NavigationBar';
 
 import Home from './components/Home';
 
-function App() {
+const App = () => {
   return (
     <BrowserRouter>
-      <NavigationBar />
       <Routes>
         <Route path='/' element={<Home />} />
       </Routes>
     </BrowserRouter>
   );
-}
+};
 
 export default App;

@@ -12,7 +12,7 @@ import SearchInput from './SearchInput';
 
 import Logo from '../assets/images/Logo.png';
 
-function NavigationBar() {
+const NavigationBar = ({ searchQuery, setSearchQuery, handleSearch }) => {
   return (
     <AppBar
       position='static'
@@ -81,12 +81,16 @@ function NavigationBar() {
               justifyContent: 'center',
             }}
           >
-            <SearchInput />
+            <SearchInput
+              searchQuery={searchQuery}
+              setSearchQuery={setSearchQuery}
+              handleSearch={handleSearch}
+            />
           </Box>
         </Toolbar>
       </Container>
     </AppBar>
   );
-}
+};
 
 export default NavigationBar;

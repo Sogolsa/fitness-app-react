@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, TextField, Stack, Typography, Button } from '@mui/material';
 
-function SearchInput() {
+const SearchInput = ({ searchQuery, setSearchQuery, handleSearch }) => {
   return (
     <Stack
       backgroundColor='#000'
@@ -27,6 +27,8 @@ function SearchInput() {
           id='outlined-basic'
           variant='outlined'
           placeholder='Search exercises...'
+          value={searchQuery} // TextField controlled by the state
+          onChange={(e) => setSearchQuery(e.target.value)} // Update searchQuery state
           sx={{
             input: {
               fontWeight: { lg: '500', xs: '300' },
@@ -59,12 +61,13 @@ function SearchInput() {
             borderRadius: '4px',
             boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.2)',
           }}
+          onClick={handleSearch}
         >
           Search
         </Button>
       </Box>
     </Stack>
   );
-}
+};
 
 export default SearchInput;

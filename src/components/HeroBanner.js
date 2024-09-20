@@ -1,9 +1,8 @@
 import React from 'react';
 import { Box, Typography, Stack, Button } from '@mui/material';
 import BannerImage from '../assets/images/banner.jpg';
-import SearchInput from './SearchInput';
 
-function HeroBanner() {
+const HeroBanner = () => {
   return (
     <Box
       sx={{
@@ -16,7 +15,7 @@ function HeroBanner() {
         overflowX: 'hidden',
         maxWidth: '100%',
         width: 'auto',
-        height: { lg: '200vh', xs: '100vh' },
+        height: { lg: '160vh', xs: '80vh' },
         minHeight: { lg: '600px', xs: '350px' },
         position: 'relative',
         paddingTop: { lg: '200px', xs: '40px' },
@@ -28,28 +27,30 @@ function HeroBanner() {
         sx={{
           zIndex: 1,
           mt: { lg: '50px', xs: '20px' },
-          ml: { sm: '40px', xs: '10px' },
+          ml: { sm: '40px', xs: '2px' },
         }}
       >
         <Typography
           color='#a53860'
           sx={{
-            fontWeight: { lg: '600', xs: '400' },
-            fontSize: { lg: '26px', xs: '20px' },
+            fontWeight: { lg: '600', xs: '600' },
+            fontSize: { lg: '26px', xs: '18px' },
           }}
         >
           Welcome to My Fitness App
         </Typography>
         <Typography
-          fontWeight='700'
-          sx={{ fontSize: { lg: '42px', xs: '30px' } }}
+          sx={{
+            fontSize: { lg: '42px', xs: '25px' },
+            fontWeight: { lg: '700', xs: '600' },
+          }}
           mb='20px'
           mt='30px'
         >
           Your journey to <br /> a healthier lifestyle <br /> starts here
         </Typography>
         <Stack>
-          <a
+          <Button
             href='#exercises'
             style={{
               marginTop: '45px',
@@ -64,11 +65,11 @@ function HeroBanner() {
             }}
           >
             Explore Exercises
-          </a>
+          </Button>
         </Stack>
       </Box>
     </Box>
   );
-}
+};
 
 export default HeroBanner;
