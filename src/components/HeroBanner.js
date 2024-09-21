@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Typography, Stack, Button } from '@mui/material';
 import BannerImage from '../assets/images/banner.jpg';
 
-const HeroBanner = () => {
+const HeroBanner = ({ handleExplore }) => {
   return (
     <Box
       sx={{
@@ -52,14 +52,15 @@ const HeroBanner = () => {
         <Stack>
           <Button
             href='#exercises'
+            onClick={handleExplore}
             style={{
               marginTop: '45px',
               fontSize: '22px',
               background: '#a53860',
-              padding: '14px',
               color: 'white',
               borderRadius: '4px',
               textDecoration: 'none',
+              textTransform: 'none',
               width: '200px',
               textAlign: 'center',
             }}
