@@ -18,9 +18,10 @@ const SearchResults = ({ loading, error, searchResults, searchPerformed }) => {
         flexWrap='wrap'
         justifyContent='flex-start'
       >
-        {searchResults.length > 0 &&
+        {searchResults &&
+          searchResults.length > 0 && //ensure searchResults is not null
           searchResults.map((exercise) => (
-            <Box key={exercise.id}>
+            <Box>
               <ExerciseCard key={exercise.id} exercise={exercise} />
             </Box>
           ))}
