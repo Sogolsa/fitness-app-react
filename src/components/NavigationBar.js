@@ -8,12 +8,14 @@ import {
   Box,
   Typography,
 } from '@mui/material';
-import { Link, useNavigate } from 'react-router-dom'; // Change this import
+import { Link, useLocation } from 'react-router-dom'; // Change this import
 
 import SearchInput from './SearchInput';
 import Logo from '../assets/images/Logo.png';
 
 const NavigationBar = ({ searchQuery, setSearchQuery, handleSearch }) => {
+  const location = useLocation();
+
   return (
     <AppBar
       position='static'
@@ -58,7 +60,8 @@ const NavigationBar = ({ searchQuery, setSearchQuery, handleSearch }) => {
                 sx={{
                   textDecoration: 'none',
                   color: '#fff',
-                  borderBottom: '3px solid #fff',
+                  borderBottom:
+                    location.pathname === '/' ? '3px solid #fff' : 'none',
                 }}
               >
                 Home
@@ -69,6 +72,10 @@ const NavigationBar = ({ searchQuery, setSearchQuery, handleSearch }) => {
                 sx={{
                   textDecoration: 'none',
                   color: '#fff',
+                  borderBottom:
+                    location.pathname === '/exercises'
+                      ? '3px solid #fff'
+                      : 'none',
                 }}
               >
                 Exercises
