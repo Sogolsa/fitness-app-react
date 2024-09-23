@@ -109,7 +109,17 @@ const Home = () => {
           path='/'
           element={<HeroBanner handleExplore={handleExplore} />}
         />
-        <Route path='/exercises' element={<ExerciseList />} />
+        <Route
+          path='/exercises'
+          element={
+            <ExerciseList
+              setLoading={setLoading}
+              setSearchPerformed={setSearchPerformed}
+              setExercises={setExercises}
+              exercises={exercises}
+            />
+          }
+        />
         <Route
           path='/search'
           element={
