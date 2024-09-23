@@ -1,15 +1,19 @@
 import React from 'react';
-import { AppBar, Stack, Toolbar, Button, Container, Box } from '@mui/material';
+import {
+  AppBar,
+  Stack,
+  Toolbar,
+  Button,
+  Container,
+  Box,
+  Typography,
+} from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom'; // Change this import
 
 import SearchInput from './SearchInput';
 import Logo from '../assets/images/Logo.png';
 
 const NavigationBar = ({ searchQuery, setSearchQuery, handleSearch }) => {
-  const navigate = useNavigate();
-  const handleExercisesLink = () => {
-    navigate('/exercises'); // Navigate to exercises page
-  };
   return (
     <AppBar
       position='static'
@@ -48,7 +52,8 @@ const NavigationBar = ({ searchQuery, setSearchQuery, handleSearch }) => {
                 fontSize: { lg: '24px', xs: '14px' },
               }}
             >
-              <Link
+              <Typography
+                component={Link}
                 to='/'
                 sx={{
                   textDecoration: 'none',
@@ -57,9 +62,9 @@ const NavigationBar = ({ searchQuery, setSearchQuery, handleSearch }) => {
                 }}
               >
                 Home
-              </Link>
-              <Link
-                onClick={handleExercisesLink}
+              </Typography>
+              <Typography
+                component={Link}
                 to='/exercises'
                 sx={{
                   textDecoration: 'none',
@@ -67,7 +72,7 @@ const NavigationBar = ({ searchQuery, setSearchQuery, handleSearch }) => {
                 }}
               >
                 Exercises
-              </Link>
+              </Typography>
             </Stack>
           </Stack>
 

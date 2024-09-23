@@ -4,10 +4,13 @@ import { Box } from '@mui/material';
 import HeroBanner from './HeroBanner';
 import NavigationBar from './NavigationBar';
 import SearchResults from './SearchResults';
+import ExerciseList from './ExerciseList';
 import { authorizationOptions, fetchExercises } from '../utils/api';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const API_URL = 'https://exercisedb.p.rapidapi.com';
+  const navigate = useNavigate();
 
   const [exercises, setExercises] = useState([]);
   const [searchQuery, setSearchQuery] = useState(''); // User's search input
@@ -28,6 +31,8 @@ const Home = () => {
     setExercises(exercises);
     setSearchResults(exercises);
     setLoading(false);
+    navigate('/search');
+
     console.log('All exercises', exercises);
 
     // Scroll to the results section
@@ -71,6 +76,8 @@ const Home = () => {
             )
           : exercises;
 
+        navigate('/search');
+
         // Clear the search once your done
         setSearchQuery('');
         setSearchResults(filteredExercises);
@@ -97,15 +104,33 @@ const Home = () => {
         setSearchQuery={setSearchQuery}
         handleSearch={handleSearch}
       />
-      <HeroBanner handleExplore={handleExplore} />
-      <Box ref={resultsRef}>
+      <Routes>
+        <Route
+          path='/'
+          element={<HeroBanner handleExplore={handleExplore} />}
+        />
+        <Route path='/exercises' element={<ExerciseList />} />
+        <Route
+          path='/search'
+          element={
+            <SearchResults
+              searchResults={searchResults}
+              loading={loading}
+              error={error}
+              searchPerformed={searchPerformed}
+            />
+          }
+        />
+      </Routes>
+
+      {/* <Box ref={resultsRef}>
         <SearchResults
           searchResults={searchResults}
           loading={loading}
           error={error}
           searchPerformed={searchPerformed}
         />
-      </Box>
+      </Box> */}
     </Box>
   );
 };

@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Box, TextField, Stack, Typography, Button } from '@mui/material';
+// import { Link } from 'react-router-dom';
 
 const SearchInput = ({ searchQuery, setSearchQuery, handleSearch }) => {
   return (
