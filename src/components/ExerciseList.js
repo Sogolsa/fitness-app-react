@@ -1,25 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Stack, Typography, Box } from '@mui/material';
 
-import NavigationBar from './NavigationBar';
 import ExerciseCard from './ExerciseCard';
-import SearchResults from './SearchResults';
 
 import { fetchExercises, authorizationOptions } from '../utils/api';
 
 const ExerciseList = ({
   setLoading,
   setSearchPerformed,
-  searchResults,
   searchPerformed,
   loading,
   error,
   setExercises,
   exercises,
 }) => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [exercisesPerPage, setExercisesPerPage] = useState(6);
-
   useEffect(() => {
     const fetchExerciseData = async () => {
       setLoading(true);
@@ -27,7 +21,7 @@ const ExerciseList = ({
 
       try {
         const exerciseData = await fetchExercises(
-          'https://exercisedb.p.rapidapi.com/exercises',
+          'https://exercisedb.p.rapidapi.com/exercises?limit=0',
           authorizationOptions
         );
         setExercises(exerciseData);

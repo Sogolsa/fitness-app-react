@@ -1,12 +1,13 @@
 import React, { useState, useRef } from 'react';
 import { Box } from '@mui/material';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 
 import HeroBanner from './HeroBanner';
 import NavigationBar from './NavigationBar';
 import SearchResults from './SearchResults';
 import ExerciseList from './ExerciseList';
 import { authorizationOptions, fetchExercises } from '../utils/api';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import Pagination from './Pagination';
 
 const Home = () => {
   const API_URL = 'https://exercisedb.p.rapidapi.com';
@@ -18,6 +19,8 @@ const Home = () => {
   const [error, setError] = useState(''); // error messages from failed API requests.
   const [loading, setLoading] = useState(false);
   const [searchPerformed, setSearchPerformed] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [exercisesPerPage, setExercisesPerPage] = useState(30);
 
   const resultsRef = useRef(null); // Creating a ref for the search results
 
@@ -25,20 +28,20 @@ const Home = () => {
     setLoading(true);
     setSearchPerformed(true);
     const exercises = await fetchExercises(
-      `${API_URL}/exercises?limit=100&offset=0`,
+      `${API_URL}/exercises?limit=0`,
       authorizationOptions
     );
     setExercises(exercises);
-    setSearchResults(exercises);
+    // setSearchResults(exercises);
     setLoading(false);
-    navigate('/search');
+    navigate('/exercises');
 
     console.log('All exercises', exercises);
 
-    // Scroll to the results section
-    if (resultsRef.current) {
-      resultsRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
+    // Scroll to the results section - not needed since I'm showing exercises on /exercises
+    // if (resultsRef.current) {
+    //   resultsRef.current.scrollIntoView({ behavior: 'smooth' });
+    // }
   };
 
   const handleSearch = async () => {
@@ -49,7 +52,7 @@ const Home = () => {
 
       try {
         const exercises = await fetchExercises(
-          `${API_URL}/exercises`,
+          `${API_URL}/exercises?limit=0`,
           authorizationOptions
         );
 
@@ -97,6 +100,13 @@ const Home = () => {
     }
   };
 
+  const lastExerciseIndex = currentPage * exercisesPerPage;
+  const firstExerciseIndex = lastExerciseIndex - exercisesPerPage;
+  const currentExercises = exercises.slice(
+    firstExerciseIndex,
+    lastExerciseIndex
+  );
+
   return (
     <Box>
       <NavigationBar
@@ -116,7 +126,7 @@ const Home = () => {
               setLoading={setLoading}
               setSearchPerformed={setSearchPerformed}
               setExercises={setExercises}
-              exercises={exercises}
+              exercises={currentExercises}
             />
           }
         />
@@ -132,15 +142,11 @@ const Home = () => {
           }
         />
       </Routes>
-
-      {/* <Box ref={resultsRef}>
-        <SearchResults
-          searchResults={searchResults}
-          loading={loading}
-          error={error}
-          searchPerformed={searchPerformed}
-        />
-      </Box> */}
+      <Pagination
+        totalExercises={exercises.length}
+        exercisesPerPage={exercisesPerPage}
+        setCurrentPage={setCurrentPage}
+      />
     </Box>
   );
 };
