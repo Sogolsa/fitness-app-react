@@ -7,7 +7,7 @@ import NavigationBar from './NavigationBar';
 import SearchResults from './SearchResults';
 import ExerciseList from './ExerciseList';
 import { authorizationOptions, fetchExercises } from '../utils/api';
-import Pagination from './Pagination';
+// import Pagination from './Pagination';
 
 const Home = () => {
   const API_URL = 'https://exercisedb.p.rapidapi.com';
@@ -20,7 +20,7 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
   const [searchPerformed, setSearchPerformed] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [exercisesPerPage, setExercisesPerPage] = useState(30);
+  const [exercisesPerPage, setExercisesPerPage] = useState(15);
 
   const resultsRef = useRef(null); // Creating a ref for the search results
 
@@ -40,7 +40,7 @@ const Home = () => {
 
     // Scroll to the results section - not needed since I'm showing exercises on /exercises
     // if (resultsRef.current) {
-    //   resultsRef.current.scrollIntoView({ behavior: 'smooth' });
+    //   resultsRef.current.scrollIntoView({ top: 0, behavior: 'smooth' });
     // }
   };
 
@@ -100,6 +100,7 @@ const Home = () => {
     }
   };
 
+  // Pagination
   const lastExerciseIndex = currentPage * exercisesPerPage;
   const firstExerciseIndex = lastExerciseIndex - exercisesPerPage;
   const currentExercises = exercises.slice(
@@ -127,6 +128,8 @@ const Home = () => {
               setSearchPerformed={setSearchPerformed}
               setExercises={setExercises}
               exercises={currentExercises}
+              setCurrentPage={setCurrentPage}
+              currentPage={currentPage}
             />
           }
         />
@@ -142,11 +145,11 @@ const Home = () => {
           }
         />
       </Routes>
-      <Pagination
+      {/* <Pagination
         totalExercises={exercises.length}
         exercisesPerPage={exercisesPerPage}
         setCurrentPage={setCurrentPage}
-      />
+      /> */}
     </Box>
   );
 };

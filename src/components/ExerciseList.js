@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Stack, Typography, Box } from '@mui/material';
+import { Stack, Typography, Box, Pagination } from '@mui/material';
 
 import ExerciseCard from './ExerciseCard';
 
@@ -13,6 +13,9 @@ const ExerciseList = ({
   error,
   setExercises,
   exercises,
+  currentPage,
+  setCurrentPage,
+  exercisesPerPage,
 }) => {
   useEffect(() => {
     const fetchExerciseData = async () => {
@@ -57,6 +60,14 @@ const ExerciseList = ({
             </Box>
           ))}
       </Stack>
+      <Box display='flex' justifyContent='center' mt={4}>
+        <Pagination
+          count={Math.ceil(exercises.length / exercisesPerPage)} // total pages
+          page={currentPage}
+          onChange={(event, value) => setCurrentPage(value)}
+          shape='rounded'
+        />
+      </Box>
     </Box>
   );
 };
