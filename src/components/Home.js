@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Box } from '@mui/material';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 
@@ -7,6 +7,7 @@ import NavigationBar from './NavigationBar';
 import SearchResults from './SearchResults';
 import ExerciseList from './ExerciseList';
 import { authorizationOptions, fetchExercises } from '../utils/api';
+import ExerciseDetails from './ExerciseDetails';
 // import Pagination from './Pagination';
 
 const Home = () => {
@@ -28,11 +29,10 @@ const Home = () => {
     setLoading(true);
     setSearchPerformed(true);
     const exercises = await fetchExercises(
-      `${API_URL}/exercises?limit=0`,
+      `${API_URL}/exercises`,
       authorizationOptions
     );
     setExercises(exercises);
-    // setSearchResults(exercises);
     setLoading(false);
     navigate('/exercises');
 
@@ -44,6 +44,16 @@ const Home = () => {
     // }
   };
 
+  // useEffect(() => {
+  //   fetch('https://exercise-db-fitness-workout-gym.p.rapidapi.com/exercises')
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       // Ensure data is an array before setting it to state
+  //       setExercises(Array.isArray(data) ? data : []);
+  //     })
+  //     .catch((error) => console.error('Error fetching exercises:', error));
+  // }, []);
+
   const handleSearch = async () => {
     if (searchQuery) {
       setLoading(true);
@@ -52,9 +62,10 @@ const Home = () => {
 
       try {
         const exercises = await fetchExercises(
-          `${API_URL}/exercises?limit=0`,
+          `${API_URL}/exercises`,
           authorizationOptions
         );
+        console.log('exercises:', exercises);
 
         // Filter exercises based on search query
         const filteredExercises = searchQuery
@@ -141,8 +152,15 @@ const Home = () => {
               loading={loading}
               error={error}
               searchPerformed={searchPerformed}
+              setCurrentPage={setCurrentPage}
+              currentPage={currentPage}
+              exercisesPerPage={exercisesPerPage}
             />
           }
+        />
+        <Route
+          path='/exercise/:id'
+          element={<ExerciseDetails exercises={exercises} />}
         />
       </Routes>
       {/* <Pagination

@@ -4,7 +4,11 @@ import { Button, Stack, Typography } from '@mui/material';
 
 const ExerciseCard = ({ exercise }) => {
   return (
-    <Link className='exercise-card' sx={{ mr: { xs: '20px' } }}>
+    <Link
+      to={`/exercise/${exercise.id}`}
+      className='exercise-card'
+      sx={{ mr: { xs: '20px' } }}
+    >
       <img src={exercise.gifUrl} alt={exercise.name} loading='lazy' />
       <Stack direction='row'>
         <Button

@@ -24,9 +24,10 @@ const ExerciseList = ({
 
       try {
         const exerciseData = await fetchExercises(
-          'https://exercisedb.p.rapidapi.com/exercises?limit=0',
+          'https://exercisedb.p.rapidapi.com/exercises',
           authorizationOptions
         );
+
         setExercises(exerciseData);
       } catch (err) {
         console.error('Failed to fetch exercises', err);
@@ -66,6 +67,7 @@ const ExerciseList = ({
           page={currentPage}
           onChange={(event, value) => setCurrentPage(value)}
           shape='rounded'
+          defaultPage={1}
         />
       </Box>
     </Box>
