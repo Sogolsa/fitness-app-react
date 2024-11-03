@@ -14,11 +14,13 @@ const ExerciseCard = ({ exercise }) => {
         <Button
           sx={{
             ml: '21px',
-            color: '#fff',
-            background: '#FFA9A9',
+            mb: '5px',
+            color: '#000',
+            background: '#FF7F7F',
             fontSize: '14px',
             borderRadius: '20px',
             textTransform: 'capitalize',
+            padding: '3px 20px',
           }}
         >
           Details
@@ -26,11 +28,13 @@ const ExerciseCard = ({ exercise }) => {
         <Button
           sx={{
             ml: '21px',
-            color: '#fff',
-            background: '#FCC757',
+            mb: '5px',
+            color: '#000',
+            background: '#66c1b8',
             fontSize: '14px',
             borderRadius: '20px',
             textTransform: 'capitalize',
+            padding: '3px 20px',
           }}
         >
           {exercise.target}

@@ -29,7 +29,7 @@ const Home = () => {
     setLoading(true);
     setSearchPerformed(true);
     const exercises = await fetchExercises(
-      `${API_URL}/exercises`,
+      `${API_URL}/exercises?limit=0`,
       authorizationOptions
     );
     setExercises(exercises);
@@ -62,7 +62,7 @@ const Home = () => {
 
       try {
         const exercises = await fetchExercises(
-          `${API_URL}/exercises`,
+          `${API_URL}/exercises?limit=0`,
           authorizationOptions
         );
         console.log('exercises:', exercises);

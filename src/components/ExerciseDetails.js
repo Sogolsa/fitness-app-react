@@ -1,7 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
-
 import { Typography, Stack, Button, Box } from '@mui/material';
 
 const ExerciseDetails = ({ exercises }) => {
@@ -18,7 +17,7 @@ const ExerciseDetails = ({ exercises }) => {
       }}
     >
       <Stack className='exercise-card'>
-        <Typography fontWeight='bold' textTransform='capitalize'>
+        <Typography fontWeight='bold' textTransform='capitalize' padding='5px'>
           {exercise.name}
         </Typography>
         <img src={exercise.gifUrl} alt={exercise.name} loading='lazy' />

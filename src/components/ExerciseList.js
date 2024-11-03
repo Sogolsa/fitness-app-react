@@ -24,7 +24,7 @@ const ExerciseList = ({
 
       try {
         const exerciseData = await fetchExercises(
-          'https://exercisedb.p.rapidapi.com/exercises',
+          'https://exercisedb.p.rapidapi.com/exercises?limit=0',
           authorizationOptions
         );
 
