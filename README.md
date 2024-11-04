@@ -1,4 +1,8 @@
-# Getting Started with Create React App
+# fitness-web-app:
+
+This is a react app where I have fetched the exercises data from rapid api. In this app user can see the list of all the exercises, search for specific exercise by name, body part, target muscle or equipment, and they can click on each exercise to see instructions and more details about that exercise.
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
