@@ -14,10 +14,9 @@ const SearchResults = ({
   // Calculate the current exercises to show based on pagination
   const lastExerciseIndex = currentPage * exercisesPerPage;
   const firstExerciseIndex = lastExerciseIndex - exercisesPerPage;
-  const currentExercises = searchResults.slice(
-    firstExerciseIndex,
-    lastExerciseIndex
-  );
+  const currentExercises = Array.isArray(searchResults)
+    ? searchResults.slice(firstExerciseIndex, lastExerciseIndex)
+    : [];
 
   return (
     <Box>
@@ -37,8 +36,8 @@ const SearchResults = ({
         {currentExercises &&
           currentExercises.length > 0 && //ensure searchResults is not null
           currentExercises.map((exercise) => (
-            <Box>
-              <ExerciseCard key={exercise.id} exercise={exercise} />
+            <Box key={exercise.id}>
+              <ExerciseCard exercise={exercise} />
             </Box>
           ))}
       </Stack>

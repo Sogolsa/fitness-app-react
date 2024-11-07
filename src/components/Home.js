@@ -28,6 +28,9 @@ const Home = () => {
   const handleExplore = async () => {
     setLoading(true);
     setSearchPerformed(true);
+    setSearchResults([]); // Clear previous search results
+    setSearchQuery('');
+
     const exercises = await fetchExercises(
       `${API_URL}/exercises?limit=0`,
       authorizationOptions
@@ -135,6 +138,7 @@ const Home = () => {
           path='/exercises'
           element={
             <ExerciseList
+              searchResults={searchResults}
               setLoading={setLoading}
               setSearchPerformed={setSearchPerformed}
               setExercises={setExercises}
@@ -160,7 +164,13 @@ const Home = () => {
         />
         <Route
           path='/exercise/:id'
-          element={<ExerciseDetails exercises={exercises} />}
+          element={
+            <ExerciseDetails
+              exercises={exercises}
+              searchResults={searchResults}
+              searchPerformed={searchPerformed}
+            />
+          }
         />
       </Routes>
       {/* <Pagination

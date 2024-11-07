@@ -3,10 +3,29 @@ import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import { Typography, Stack, Button, Box } from '@mui/material';
 
-const ExerciseDetails = ({ exercises }) => {
+const ExerciseDetails = ({
+  exercises,
+  searchPerformed,
+  searchResults,
+  setSearchPerformed,
+}) => {
   const { id } = useParams();
+  console.log('Exercise ID from URL:', id);
+  console.log('Exercises passed to component:', exercises);
+  console.log('Search Results:', searchResults);
 
-  const exercise = exercises.find((exercise) => exercise.id === id);
+  const exerciseList =
+    searchPerformed && searchResults.length > 0 ? searchResults : exercises;
+
+  console.log('Exercise List:', exerciseList);
+
+  const exercise = exerciseList.find((exercise) => exercise.id === id);
+
+  console.log('Found Exercise:', exercise);
+
+  if (!exercise) {
+    return <Typography>Loading exercise details...</Typography>;
+  }
 
   return (
     <Box
