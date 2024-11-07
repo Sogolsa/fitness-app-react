@@ -22,7 +22,7 @@ const ExerciseList = ({
     const fetchExerciseData = async () => {
       setLoading(true);
       setSearchPerformed(true);
-      // setSearchResults([]); // Clear previous search results
+      setSearchResults([]); // Clear previous search results
 
       try {
         const exerciseData = await fetchExercises(
@@ -38,7 +38,7 @@ const ExerciseList = ({
       }
     };
     fetchExerciseData();
-  }, [setLoading, setSearchPerformed, setExercises]);
+  }, [setLoading, setSearchPerformed, setExercises, setSearchResults]);
 
   return (
     <Box>

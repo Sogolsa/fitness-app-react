@@ -139,6 +139,7 @@ const Home = () => {
           element={
             <ExerciseList
               searchResults={searchResults}
+              setSearchResults={setSearchResults}
               setLoading={setLoading}
               setSearchPerformed={setSearchPerformed}
               setExercises={setExercises}
