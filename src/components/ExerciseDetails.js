@@ -56,7 +56,9 @@ const ExerciseDetails = ({
           <span style={{ fontWeight: 'bold', color: '#8e2d53' }}>
             Secondary Muscles:{' '}
           </span>
-          {exercise.secondaryMuscles}
+          {exercise.secondaryMuscles.map((muscle, index) => (
+            <li key={index}>{muscle.trim()}</li>
+          ))}
         </Typography>
         <Typography padding={'5px'} textTransform='capitalize'>
           <span style={{ fontWeight: 'bold', color: '#8e2d53' }}>
