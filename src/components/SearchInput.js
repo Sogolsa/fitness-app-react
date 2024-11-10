@@ -10,15 +10,16 @@ const SearchInput = ({ searchQuery, setSearchQuery, handleSearch }) => {
       alignItems='center'
       justifyContent='center'
       sx={{
-        height: '80px',
-        ml: { lg: '30px', xs: '65px' },
+        // height: { xs: '80%' },
+        ml: { lg: '30px', xs: '50px' },
         gap: { lg: '20px', xs: '3px' },
       }}
     >
       <Typography
         sx={{
-          fontWeight: { lg: '600px', xs: '350px' },
-          fontSize: { lg: '20px', xs: '12px' },
+          fontWeight: { lg: '600px', xs: '300px' },
+          fontSize: { lg: '20px', xs: '10px' },
+          display: { xs: 'none', lg: 'flex' },
         }}
       >
         Search For Exercises:
@@ -37,6 +38,7 @@ const SearchInput = ({ searchQuery, setSearchQuery, handleSearch }) => {
               border: 'none',
               borderRadius: '4px',
               padding: { lg: '10px', xs: '8px' },
+              maxWidth: { xs: 'auto' },
             },
             width: { lg: '400px', xs: 'auto' },
             fieldset: {
@@ -55,8 +57,9 @@ const SearchInput = ({ searchQuery, setSearchQuery, handleSearch }) => {
             backgroundColor: '#a53860',
             height: { lg: '50px', xs: '30px' },
             width: { lg: '100px', xs: 'auto' },
-            fontSize: { lg: '20px', xs: '14px' },
-            px: '16px',
+            maxWidth: { xs: 'auto' },
+            fontSize: { lg: '20px', xs: '12px' },
+            // px: '16px',
             textTransform: 'none',
             // border: '2px solid #a53860',
             borderRadius: '4px',

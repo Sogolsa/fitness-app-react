@@ -35,14 +35,16 @@ const HeroBanner = ({ handleExplore }) => {
           sx={{
             fontWeight: { lg: '600', xs: '600' },
             fontSize: { lg: '26px', xs: '18px' },
+            maxWidth: { xs: '60%', lg: '100%' },
           }}
         >
           Welcome to My Fitness App
         </Typography>
         <Typography
           sx={{
-            fontSize: { lg: '42px', xs: '25px' },
+            fontSize: { lg: '42px', xs: '20px', sm: '25px' },
             fontWeight: { lg: '700', xs: '600' },
+            maxWidth: { xs: '75%' },
           }}
           mb='20px'
           mt='30px'
@@ -53,15 +55,18 @@ const HeroBanner = ({ handleExplore }) => {
           <Button
             href='#exercises'
             onClick={handleExplore}
+            sx={{
+              fontSize: { xs: '14px', sm: '18px', m: '20px', lg: '22px' },
+              width: { xs: '40%', lg: '200px' },
+              maxWidth: { xs: '60%' },
+            }}
             style={{
               marginTop: '45px',
-              fontSize: '22px',
               background: '#a53860',
               color: 'white',
               borderRadius: '4px',
               textDecoration: 'none',
               textTransform: 'none',
-              width: '200px',
               textAlign: 'center',
             }}
           >

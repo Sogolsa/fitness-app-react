@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { Box } from '@mui/material';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 

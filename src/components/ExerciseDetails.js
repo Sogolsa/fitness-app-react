@@ -33,26 +33,52 @@ const ExerciseDetails = ({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+        flexWrap: 'wrap',
       }}
     >
       <Stack className='exercise-card'>
-        <Typography fontWeight='bold' textTransform='capitalize' padding='5px'>
+        <Typography
+          fontWeight='bold'
+          textTransform='capitalize'
+          sx={{
+            textAlign: { xs: 'center', lg: 'left' },
+            padding: { xs: '10px', lg: '5px' },
+          }}
+        >
           {exercise.name}
         </Typography>
         <img src={exercise.gifUrl} alt={exercise.name} loading='lazy' />
-        <Typography padding={'5px'} textTransform='capitalize'>
+        <Typography
+          textTransform='capitalize'
+          sx={{
+            textAlign: { xs: 'center', lg: 'left' },
+            padding: { xs: '10px', lg: '5px' },
+          }}
+        >
           <span style={{ fontWeight: 'bold', color: '#8e2d53' }}>
             Body Part:{' '}
           </span>
           {exercise.bodyPart}
         </Typography>
-        <Typography padding={'5px'} textTransform='capitalize'>
+        <Typography
+          textTransform='capitalize'
+          sx={{
+            textAlign: { xs: 'center', lg: 'left' },
+            padding: { xs: '10px', lg: '5px' },
+          }}
+        >
           <span style={{ fontWeight: 'bold', color: '#8e2d53' }}>
             Target Muscles:{' '}
           </span>
           {exercise.target}
         </Typography>
-        <Typography padding={'5px'} textTransform='capitalize'>
+        <Typography
+          textTransform='capitalize'
+          sx={{
+            textAlign: { xs: 'center', lg: 'left' },
+            padding: { xs: '10px', lg: '5px' },
+          }}
+        >
           <span style={{ fontWeight: 'bold', color: '#8e2d53' }}>
             Secondary Muscles:{' '}
           </span>
@@ -60,13 +86,25 @@ const ExerciseDetails = ({
             <li key={index}>{muscle.trim()}</li>
           ))}
         </Typography>
-        <Typography padding={'5px'} textTransform='capitalize'>
+        <Typography
+          textTransform='capitalize'
+          sx={{
+            textAlign: { xs: 'center', lg: 'left' },
+            padding: { xs: '10px', lg: '5px' },
+          }}
+        >
           <span style={{ fontWeight: 'bold', color: '#8e2d53' }}>
             Equipment:{' '}
           </span>
           {exercise.equipment}
         </Typography>
-        <Typography padding={'5px'}>
+        <Typography
+          sx={{
+            textAlign: { xs: 'center', lg: 'left' },
+            padding: { xs: '10px', lg: '5px' },
+            pr: { xs: '25px' },
+          }}
+        >
           <span style={{ fontWeight: 'bold', color: '#8e2d53' }}>
             Instructions:
           </span>
